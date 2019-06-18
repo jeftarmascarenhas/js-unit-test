@@ -8,7 +8,8 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --write '*.js'",
     "format-code": "npm run prettier && npm run lint:fix",
-    "test": "./node_modules/.bin/mocha tests/**/*.spec.js"
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js",
+    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --watch"
   },
   "repository": {
     "type": "git",
