@@ -1,8 +1,16 @@
-const sum = (num, num2) => num + num2;
-const sub = (num, num2) => num - num2;
-const mult = (num, num2) => num * num2;
-const div = (num, num2) => (num === 0 || num2 === 0 ? 'not possibity div per zero' : num / num2);
+const FizzBuzz = (num) => {
+  if (num === 0) return 0;
+  if (num % 3 === 0 && num % 5 === 0) return 'FizzBuzz';
+  if (num % 3 === 0) return 'Fizz';
+  if (num % 5 === 0) return 'Buzz';
 
-export {
-  sum, sub, mult, div,
+  return num;
 };
+
+const teste = () => 'teste';
+const teste2 = () => 'teste2';
+
+teste();
+teste2();
+
+export default FizzBuzz;

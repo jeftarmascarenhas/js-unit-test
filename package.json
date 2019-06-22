@@ -9,7 +9,20 @@
     "prettier": "prettier --write '*.js'",
     "format-code": "npm run prettier && npm run lint:fix",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
-    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch"
+    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
   },
   "repository": {
     "type": "git",
@@ -36,11 +49,12 @@
     "eslint-plugin-import": "^2.17.3",
     "husky": "^2.4.1",
     "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "prettier": "^1.18.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format-code"
+      "pre-commit": "npm run format-code && npm run test:coverage"
     }
   }
 }
