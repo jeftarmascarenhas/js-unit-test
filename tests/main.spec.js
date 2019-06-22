@@ -1,68 +1,50 @@
-/*
-  Pensando em teste
-  1. O que o código precisa fazer?
-  2. Que dados ele recebe?
-  3. Que dados ele precisa retornar?
-  4. Que ações precisa acontecer para o código rodar?
-  4.1 ex: Se é pra chamar um método quando clicar, da focus...
-*/
+import { expect } from 'chai';
 
-/*
-  Padrão de teste
-  1. O método tem que fazer isso quando aquilo
-  1.1. en - It should do that when this
-  ex: it('should return 4 when receive 2,2', () => {
-    expect(sum(2,2)).to.equal(4) // expect return 4
-  })
-*/
+import {
+  sum, sub, mult, div,
+} from '../src/main';
 
-const { expect } = require('chai');
-
-describe('Main', () => {
-  let arr;
-  // roda uma vez só antes do bloco
-  before(() => {});
-  // roda uma vez só depois do bloco
-  after(() => {});
-  // roda todas as vezes antes de cada bloco
-  beforeEach(() => {
-    arr = [1, 2, 3];
+describe('Calc', () => {
+  // smoke tests
+  describe('Smoke tests', () => {
+    it('should exist method `sum`', () => {
+      expect(sum).to.exist;
+      expect(sum).to.be.a('function');
+    });
+    it('shoud exist method `sub`', () => {
+      expect(sub).to.exist;
+      expect(sub).to.be.a('function');
+    });
+    it('shoud exist method `mult`', () => {
+      expect(mult).to.exist;
+      expect(mult).to.be.a('function');
+    });
+    it('shoud exist method `div`', () => {
+      expect(div).to.exist;
+      expect(div).to.be.a('function');
+    });
   });
-  // roda todas as vezes depois de cada bloco
-  afterEach(() => {});
-
-  // Teste inicial para saber o tipo ou se exite(smoke test)
-  it('should be an array', () => {
-    expect(arr).to.be.a('array');
+  describe('Sum', () => {
+    it('should return 4 when `sum(2,2)`', () => {
+      expect(sum(2, 2)).to.be.equal(4);
+    });
   });
-
-  it('should have a size of 4 when push another value to the array', () => {
-    arr.push(4);
-    expect(arr).to.have.lengthOf(4);
+  describe('Sub', () => {
+    it('should return -4 when `sub(6,10)`', () => {
+      expect(sub(6, 10)).to.be.equal(-4);
+    });
   });
-
-  it('should have a size of 2 when pop a value from the array', () => {
-    arr.pop();
-    // expect = espero; to = ligação; not = negação; include = condição
-    expect(arr).to.not.include(3);
+  describe('Mult', () => {
+    it('should return 4 when `mult(2,2)`', () => {
+      expect(mult(2, 2)).to.be.equal(4);
+    });
   });
-
-  it('should return true when pop 3 from the array', () => {
-    expect(arr.pop() === 3).to.be.true;
-  });
-
-  it('should remove the value 3 when use pop in the array', () => {
-    arr.pop();
-    expect(arr).to.have.lengthOf(2);
+  describe('Div', () => {
+    it('should return 2 when `div(4,2)`', () => {
+      expect(div(4, 2)).to.be.equal(2);
+    });
+    it('should return `not possibity div by 0`', () => {
+      expect(div(4, 0)).to.be.equal('not possibity div per zero');
+    });
   });
 });
-
-// Hooks
-// before
-// after
-// test 1
-// beforeEach
-// afterEach
-// test 2
-// afeterEach
-// after
